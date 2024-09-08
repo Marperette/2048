@@ -13,8 +13,8 @@ const ResultModal= forwardRef(function ResultModal({newGame}, ref) {
     });
 
     return createPortal( //Output dialog någon annanstans i trädet, i det här fallet i diven "modal" som finns i index.html
-    <dialog ref={dialog} className="result-modal" onClose={newGame}>
-        <p>Du vann!</p>
+    <dialog ref={dialog} className="result" onClose={newGame}>
+        <h2>Du vann!</h2>
         <form method="dialog" onSubmit={newGame}>
             <button>New Game</button>
         </form>

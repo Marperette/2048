@@ -6,7 +6,6 @@ function Gameboard() {
     const [gameBoard, setGameBoard] = useState([[0,0,0,0], [0,0,0,0], [0,0,0,0],[0,0,0,0]])
     const [score, setScore] = useState(0);
     const [fullBoard, setFullBoard] = useState(0);
-    const [win, setWin] = useState(false);
     const dialog = useRef();
   
     useEffect(() => {
@@ -18,20 +17,18 @@ function Gameboard() {
         var row = Math.floor(Math.random()*(4));
         var col = Math.floor(Math.random()*(4));
         var newValue = 2;
-        if(newBoard[row][col]===0){
-            newBoard[row][col] = newValue;
-            //setGameBoard(board);
-            console.log('new value added');
-            console.log(newBoard);
-            return newBoard;
-        }else{
-            addNewValue(newBoard);
+        while(newBoard[row][col]!==0){
+            row = Math.floor(Math.random()*(4));
+            col = Math.floor(Math.random()*(4));
         }
-        
+            newBoard[row][col] = newValue;
+            return newBoard;
     }
+        
+    
     function equalsCheck(oldBoard, newBoard){
-        for(var i=0; i<oldBoard.length-1; i++){
-            for(var j=0; j<oldBoard.length-1; j++){
+        for(var i=0; i<oldBoard.length; i++){
+            for(var j=0; j<oldBoard.length; j++){
                 if(oldBoard[i][j]!==newBoard[i][j]){
                     return false;
                 }
@@ -51,7 +48,7 @@ function Gameboard() {
             return true;
        }
     }
-    //TODO modal för vinst
+
     function move(row) {
         var counter = 0
         row = row.filter(x => x !== 0)
@@ -64,7 +61,6 @@ function Gameboard() {
                 row.splice(counter+1,1);
                 length--;   
                 if(row[counter]===2048){
-                    setWin(true);
                     dialog.current.open();
                 } 
             }
@@ -83,9 +79,6 @@ function Gameboard() {
         }
         console.log(newBoard);
         setGameBoard(newBoard);
-       /*  if(win){
-            dialog.current.open();
-        } */
     }
 
     function moveRight() {
@@ -127,7 +120,7 @@ function Gameboard() {
     }
 
     function newGame(){
-        setGameBoard([[0,0,0,0], [0,0,0,0], [0,4,2,0],[0,0,0,0]]);
+        setGameBoard([[1024,1024,0,0], [0,0,0,0], [0,4,2,0],[0,0,0,0]]);
     }
 
     function tileColor(value){
@@ -139,17 +132,17 @@ function Gameboard() {
 
     return (
         <>
-        <ResultModal ref={dialog} onReset={newGame}/>
+        <ResultModal ref={dialog} newGame={newGame}/>
         <div className="game-area">
             <div className="score"><p>Score: {score}</p></div>
     <div className="gameboard">
-        {gameBoard.map((row) => (
+        {gameBoard? gameBoard.map((row) => (
             row.map((value) => (
                 <div className={`
                     ${ tileColor(value) }
                 `} >{value}</div>
             ))
-        ))}
+        )): null}
         </div>
         <div className="button-bar">
         <button onClick={moveLeft}>Move Left</button>

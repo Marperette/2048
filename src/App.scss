@@ -2,10 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-h1, p {
+h1, h2, p {
     font-family: 'Poppins', sans-serif;
     color: #B6869C;
     flex: 0 0 100%;
@@ -112,7 +111,6 @@ h1, p {
   }
   button {
     flex: 0 0 48%;
-    //margin-top: 2rem;
     padding: 0.5rem 0;
     color: #fff;
     font-size: 1.5rem;
@@ -136,3 +134,14 @@ h1, p {
       text-align: left;
     }
   }
+  .result{
+    padding: 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin: auto;
+
+    h2{
+      margin: 0.5rem;
+    }
+  }
+  

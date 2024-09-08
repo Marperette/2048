@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-h1, p {
+h1, h2, p {
   font-family: "Poppins", sans-serif;
   color: #B6869C;
   flex: 0 0 100%;
@@ -131,4 +131,14 @@ button:hover {
 .score p {
   font-size: 1.5rem;
   text-align: left;
+}
+
+.result {
+  padding: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin: auto;
+}
+.result h2 {
+  margin: 0.5rem;
 }/*# sourceMappingURL=App.css.map */
