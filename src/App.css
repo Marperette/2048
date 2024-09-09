@@ -11,6 +11,19 @@ h1, h2, p {
   text-align: center;
 }
 
+h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
 .main {
   width: 375px;
   margin: auto;
@@ -25,6 +38,7 @@ h1, h2, p {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin: 0 1rem;
 }
 
 .gameboard {
@@ -36,10 +50,10 @@ h1, h2, p {
   background-color: darkgray;
   gap: 0.25rem;
   padding: 0.25rem 0;
-  max-width: 300px;
 }
 .gameboard .tile {
-  flex: 0 0 23.5%;
+  height: 80px;
+  width: 80px;
   background-color: lightgray;
   display: flex;
   justify-content: center;
@@ -73,37 +87,39 @@ h1, h2, p {
   background-color: #5A7684;
 }
 .gameboard .n64 {
-  background-color: #395B50;
+  background-color: #425761;
 }
 .gameboard .n128 {
-  background-color: #467263;
+  background-color: #395B50;
 }
 .gameboard .n265 {
-  background-color: #273F37;
+  background-color: #467263;
 }
 .gameboard .n512 {
-  background-color: #41612E;
+  background-color: #273F37;
 }
 .gameboard .n1024 {
+  background-color: #41612E;
+}
+.gameboard .n2048 {
   background-color: #1F2F16;
 }
-@media (min-width: 480px) {
-  .gameboard {
-    max-width: 400px;
-  }
-}
-
 .button-bar {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: space-evenly;
-  padding: 2rem;
 }
-@media (min-width: 480px) {
-  .button-bar {
-    max-width: 400px;
+.button-bar .move-buttons {
+  display: none;
+}
+@media (min-width: 768px) {
+  .button-bar .move-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-evenly;
   }
 }
 
@@ -117,6 +133,9 @@ button {
   border: 5px solid #B6869C;
   background-color: #B6869C;
 }
+button.new {
+  flex: 0 0 100%;
+}
 button:focus {
   outline: 2px solid #804D63;
 }
@@ -129,7 +148,6 @@ button:hover {
   margin: 1rem;
 }
 .score p {
-  font-size: 1.5rem;
   text-align: left;
 }
 
@@ -138,7 +156,36 @@ button:hover {
   border: none;
   border-radius: 0.5rem;
   margin: auto;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
 }
-.result h2 {
-  margin: 0.5rem;
+.result .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }/*# sourceMappingURL=App.css.map */

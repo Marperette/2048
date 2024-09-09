@@ -10,6 +10,16 @@ h1, h2, p {
     flex: 0 0 100%;
     text-align: center;
 }
+h1{
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+h2 {
+  font-size: 2rem;
+}
+p {
+  font-size: 1.5rem;
+}
 
 .main {
     width: 375px;
@@ -25,6 +35,7 @@ h1, h2, p {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin: 0 1rem;
 }
 
 .gameboard {
@@ -36,10 +47,10 @@ h1, h2, p {
     background-color: darkgray;
     gap: 0.25rem;
     padding: 0.25rem 0;
-    max-width: 300px;
 
     .tile {
-    flex: 0 0 23.5%;
+    height: 80px;
+    width: 80px;
     background-color: lightgray;
     display: flex;
     justify-content: center;
@@ -75,40 +86,45 @@ h1, h2, p {
       
     }
     .n64{
-      background-color: #395B50;
-      
+      background-color: #425761;
     }
     .n128 {
-      background-color:#467263;
-      
+      background-color: #395B50;
     }
     .n265 {
-      background-color:#273F37;
-      
+      background-color:#467263;
     }
     .n512 {
-      
-      background-color:#41612E;
+      background-color:#273F37;
     }
     .n1024{
+      background-color:#41612E;
+    }
+    .n2048{
       background-color: #1F2F16;
     }
   @media (min-width: 480px) {
-    max-width: 400px;
+    //width: 350px;
   }
   }
   .button-bar {
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     justify-content: space-evenly;
-    padding: 2rem;
-
-    @media (min-width: 480px) {
-      max-width: 400px;
+    
+    .move-buttons {
+      display: none;
+      @media(min-width: 768px){
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    justify-content: space-evenly;
+      }
     }
   }
+
   button {
     flex: 0 0 48%;
     padding: 0.5rem 0;
@@ -117,8 +133,10 @@ h1, h2, p {
     font-family: 'Poppins', sans-serif;
     border-radius: 0.5rem;
     border:5px solid #B6869C;
-      background-color: #B6869C;
-
+    background-color: #B6869C;
+    &.new{
+      flex: 0 0 100%;
+    }
     &:focus {
       outline: 2px solid #804D63;
     }
@@ -127,10 +145,10 @@ h1, h2, p {
       background-color: #804D63;
     }
   }
+
   .score{
     margin: 1rem;
     p{
-      font-size: 1.5rem;
       text-align: left;
     }
   }
@@ -139,9 +157,29 @@ h1, h2, p {
     border: none;
     border-radius: 0.5rem;
     margin: auto;
-
-    h2{
-      margin: 0.5rem;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
     }
   }
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
   
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
